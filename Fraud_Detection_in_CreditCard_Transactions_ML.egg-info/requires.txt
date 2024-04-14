@@ -1,0 +1,17 @@
+pandas
+matplotlib
+numpy
+datetime
+pingouin
+scipy
+datasist
+geopy
+imblearn
+category_encoders
+seaborn
+flask
+scikit-learn
+typing
+pickles
+datetime
+dataclasses
