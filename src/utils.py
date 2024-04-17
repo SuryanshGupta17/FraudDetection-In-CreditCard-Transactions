@@ -1,6 +1,8 @@
 import os 
 import sys 
 import pandas as pd
+import mysql.connector
+from sqlalchemy import create_engine
 import numpy as np
 import pickle 
 from geopy.distance import great_circle
@@ -80,6 +82,40 @@ def feature_engg(test_df):
 
     return test_df
             
-def upload():
-     df = pd.DataFrame(pd.read_csv(r"C:\Users\USER\Desktop\FraudDetection\notebooks\data\fraudTrain.csv"))
-     
+def import_data_from_mysql():
+    connection = connect_to_mysql()
+    
+    query = "SELECT * FROM fraudprojectdata"
+    
+    filename = "data/Train.csv"
+    export_data(connection, query, filename)
+    return filename
+    
+def connect_to_mysql():
+    try:
+        connection = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="Shanky17",
+            database="fraudproject",
+            use_pure=True
+        )
+        return connection
+    except Exception as e: 
+        raise CustomException(e,sys)
+
+def export_data(connection, query, filename):
+    try:
+        cursor = connection.cursor()
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        
+        with open(filename, 'w') as file:
+            for row in rows:
+                file.write(','.join(map(str, row)) + '\n')
+        print("Data exported and saved to file:", filename)
+    except mysql.connector.Error as error:
+        print("Failed to export data from MySQL:", error)
+
