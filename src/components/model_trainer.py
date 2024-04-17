@@ -2,8 +2,11 @@ import pandas as pd
 import numpy as np 
 import sys 
 import os
+from scipy.sparse import coo_matrix, csr_matrix
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet 
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
 from src.logger import logging 
 from src.exception import CustomException 
 from dataclasses import dataclass
@@ -22,16 +25,17 @@ class ModelTrainer():
     def initiate_model_training(self, train_array, test_array): 
         try: 
             logging.info("Seggregating the dependent and independent variables")
-            X_train, y_train, X_test, y_test = (train_array[:, :-1], 
-                                                train_array[:,-1], 
-                                                test_array[:, :-1], 
-                                                test_array[:,-1])
+            # Convert train_array and test_array to CSR format
+            train_array = train_array.tocsr()
+            test_array = test_array.tocsr()
+
+            # Slice the CSR matrices to get X_train, y_train, X_test, y_test
+            X_train, y_train = train_array[:, :-1], train_array[:, -1].toarray().ravel()
+            X_test, y_test = test_array[:, :-1], test_array[:, -1].toarray().ravel()
+
             models = {
-                "LinearRegression": LinearRegression(),
-                "Ridge": Ridge(), 
-                "Lasso":Lasso(), 
-                "ElasticNet": ElasticNet(), 
-                "DecisionTree": DecisionTreeRegressor()
+                'Logistic Regression': LogisticRegression(random_state=10),
+                'Decision Tree': DecisionTreeClassifier(random_state=10)
             }
             model_report: dict = model_performance(X_train, y_train, X_test, y_test, models)
 
@@ -46,9 +50,9 @@ class ModelTrainer():
             
             best_model = models[best_model_name]
 
-            print(f"The best model is {best_model_name}, with R2 Score: {best_model_score}")
+            print(f"The best model is {best_model_name}, with Accuracy Score: {best_model_score}")
             print("\n"*100)
-            logging.info(f"The best model is {best_model_name}, with R2 Score: {best_model_score}")
+            logging.info(f"The best model is {best_model_name}, with Accuracy Score: {best_model_score}")
             save_function(file_path= self.model_trainer_config.trained_model_file_path, obj = best_model)
 
 

@@ -1,5 +1,7 @@
 import os
 import sys
+import numpy as np
+from geopy.distance import great_circle
 from src.logger import logging
 from src.exception import CustomException
 import pandas as pd
@@ -23,10 +25,12 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info('Data Ingestion methods Starts')
         try:
-            df=pd.read_csv(os.path.join('notebooks/data','fraudTrain.csv'))
+            df=pd.read_csv(os.path.join(r'C:\Users\USER\Desktop\FraudDetection\notebooks\data','fraudTrain.csv'))
             logging.info('Dataset read as pandas Dataframe')
-
+            
+           
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
+           
             df.to_csv(self.ingestion_config.raw_data_path,index=False)
             logging.info('Train test split')
             train_set,test_set=train_test_split(df,test_size=0.30,random_state=42)
@@ -35,6 +39,7 @@ class DataIngestion:
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
 
             logging.info('Ingestion of Data is completed')
+            logging.info(f'Dataframe Head : \n{df.head().to_string()}')
 
             return(
                 self.ingestion_config.train_data_path,
