@@ -1,0 +1,8 @@
+[2024-04-17 17:41:23,987] 96 werkzeug - WARNING -  * Debugger is active!
+[2024-04-17 17:41:23,987] 96 werkzeug - INFO -  * Debugger PIN: 680-784-833
+[2024-04-17 17:41:27,333] 76 root - INFO - Dataframe created
+[2024-04-17 17:41:27,384] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:41:27] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[2024-04-17 17:41:27,453] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:41:27] "[36mGET /predict?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2024-04-17 17:41:27,453] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:41:27] "[36mGET /predict?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2024-04-17 17:41:27,478] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:41:27] "[36mGET /predict?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2024-04-17 17:41:27,497] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:41:27] "[36mGET /predict?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -

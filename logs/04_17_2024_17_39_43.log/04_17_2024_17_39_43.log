@@ -1,0 +1,10 @@
+[2024-04-17 17:39:45,325] 96 werkzeug - WARNING -  * Debugger is active!
+[2024-04-17 17:39:45,334] 96 werkzeug - INFO -  * Debugger PIN: 680-784-833
+[2024-04-17 17:39:53,479] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:39:53] "GET /predict HTTP/1.1" 200 -
+[2024-04-17 17:40:35,479] 76 root - INFO - Dataframe created
+[2024-04-17 17:40:35,498] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:40:35] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[2024-04-17 17:40:35,569] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:40:35] "[36mGET /predict?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2024-04-17 17:40:35,574] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:40:35] "[36mGET /predict?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2024-04-17 17:40:35,606] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:40:35] "[36mGET /predict?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2024-04-17 17:40:35,615] 96 werkzeug - INFO - 127.0.0.1 - - [17/Apr/2024 17:40:35] "[36mGET /predict?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2024-04-17 17:41:21,892] 96 werkzeug - INFO -  * Detected change in 'C:\\Users\\USER\\Desktop\\FraudDetection\\src\\utils.py', reloading
