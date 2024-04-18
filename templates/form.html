@@ -17,7 +17,7 @@
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.36);
   }
   .form-group {
     margin-bottom: 20px;
@@ -49,57 +49,74 @@
   input[type="submit"]:hover {
     background-color: #0056b3;
   }
+  h2{
+    font-family: "Arial", sans-serif; 
+    font-size: 24px; 
+    font-weight: bold; 
+    text-align: center; 
+    color: blue; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+  }
+  label{
+    font-family: "Arial", sans-serif; 
+    font-size: 16px; 
+    font-weight: bold; 
+    text-align: left; 
+    color: black; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.01);
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>Credit Card Details Form</h2>
+  <h2>Credit Card Transaction Details Form</h2>
   <form action="{{url_for('predict_datapoint')}}" method="POST">
     <div class="form-group">
       <label for="trans_date_trans_time">Transaction Date and Transaction Time :</label>
-      <input type="text" id="trans_date_trans_time" name="Transaction Date and Transaction Time :" placeholder="Enter Transaction Date and Transaction Time value (YYYY-MM-DD HH-MM-SS)">
+      <input type="text" id="trans_date_trans_time" name="Transaction Date and Transaction Time :" placeholder="Enter Transaction Date and Transaction Time value (MM-DD-YYYY HH-MM-SS)">
     </div>
 
     <div class="form-group">
       <label for="dob">Date of Birth :</label>
-      <input type="text" id="dob" name="Date of Birth :" placeholder="Enter your Date of Birth (float)">
+      <input type="text" id="dob" name="Date of Birth :" placeholder="Enter your Date of Birth (MM-DD-YYYY)... ">
     </div>
 
     <div class="form-group">  
       <label for="lat">Latitude :</label>
-      <input type="text" id="lat" name="Latitude :" placeholder="Enter Latitudnal value (float)">
+      <input type="text" id="lat" name="Latitude :" placeholder="Enter Latitudnal value... ">
     </div>
     
     <div class="form-group">
       <label for="long">Longitude :</label>
-      <input type="text" id="long" name="long" placeholder="Enter Longitudnal value (float)">
+      <input type="text" id="long" name="long" placeholder="Enter Longitudnal value... ">
     </div>
   
     <div class="form-group">
       <label for="merch_lat">Merchants Latitude :</label>
-      <input type="text" id="merch_lat" name="merch_lat" placeholder="Enter Merchants Latitudnal value (float)">
+      <input type="text" id="merch_lat" name="merch_lat" placeholder="Enter Merchants Latitudnal value... ">
     </div>
   
     <div class="form-group">
       <label for="merch_long">Merchants Longitude:</label>
-      <input type="text" id="merch_long" name="merch_long" placeholder="Enter Merchants Longitudnal value (float)">
+      <input type="text" id="merch_long" name="merch_long" placeholder="Enter Merchants Longitudnal value... ">
     </div>         
   
   
     <div class="form-group">
       <label for="cc_num">Credit Card Number :</label>
-      <input type="text" id="cc_num" name="cc_num" placeholder="Enter Credit Card Number value (float)">
+      <input type="text" id="cc_num" name="cc_num" placeholder="Enter your 15 digit Credit Card Number...">
     </div>         
   
     <div class="form-group">
       <label for="amt">Amount :</label>
-      <input type="text" id="amt" name="amt" placeholder="Enter Amount value (float)">
+      <input type="text" id="amt" name="amt" placeholder="Enter Amount...">
     </div>         
     
     <div class="form-group">
       <label for="zip">ZIP Code :</label>
-      <input type="text" id="zip" name="zip" placeholder="Enter ZIP Code value (float)">
+      <input type="text" id="zip" name="zip" placeholder="Enter ZIP Code...">
     </div>         
   
     <div class="form-group">
@@ -113,7 +130,7 @@
   
     <div class="form-group">
       <label for="merchant">Merchant :</label>
-      <input type="text" id="merchant" name="merchant" placeholder="Enter Merchant Name (string)">
+      <input type="text" id="merchant" name="merchant" placeholder="Enter Merchant name...">
     </div>
 
     <div class="form-group">
@@ -151,7 +168,7 @@
 
     <div class="form-group">
       <label for="city">City :</label>
-      <input type="text" id="merchant" name="merchant" placeholder="Enter Merchant Name (string)">      
+      <input type="text" id="merchant" name="merchant" placeholder="Enter City name...">      
     </div>
 
     <div class="form-group">
