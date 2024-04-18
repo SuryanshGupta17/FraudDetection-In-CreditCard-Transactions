@@ -26,11 +26,12 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-
+      
       - name: Install dependencies
         run: pip install -r requirements.txt
-
+        
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -48,6 +49,8 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -58,10 +61,18 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_EAA3FA761C2E4EC294C3C4C3F126C351 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_54921C502B9C466AB6D60D9D12199E2C }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EA10629348D14419A8DBAE92E41E6507 }}
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'frauddetections'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FE556E68D7F549D4829D89C1C928332E }}
+          
