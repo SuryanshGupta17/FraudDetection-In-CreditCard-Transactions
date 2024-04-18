@@ -1,0 +1,3 @@
+[2024-04-18 01:29:15,783] 96 werkzeug - WARNING -  * Debugger is active!
+[2024-04-18 01:29:15,794] 96 werkzeug - INFO -  * Debugger PIN: 680-784-833
+[2024-04-18 01:29:24,571] 96 werkzeug - INFO -  * Detected change in 'c:\\users\\user\\desktop\\frauddetection\\a.py', reloading

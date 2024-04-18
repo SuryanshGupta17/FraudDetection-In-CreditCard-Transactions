@@ -1,0 +1,11 @@
+[2024-04-17 23:49:34,870] 96 werkzeug - WARNING -  * Debugger is active!
+[2024-04-17 23:49:34,886] 96 werkzeug - INFO -  * Debugger PIN: 680-784-833
+[2024-04-18 00:05:08,006] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 00:05:08] "GET /predict HTTP/1.1" 200 -
+[2024-04-18 00:05:42,485] 76 root - INFO - Dataframe created
+[2024-04-18 00:05:42,677] 24 root - INFO - Error occured in predict function in prediction_pipeline location
+[2024-04-18 00:05:42,766] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 00:05:42] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -
+[2024-04-18 00:05:42,859] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 00:05:42] "[36mGET /predict?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2024-04-18 00:05:42,875] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 00:05:42] "[36mGET /predict?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2024-04-18 00:05:42,912] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 00:05:42] "[36mGET /predict?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2024-04-18 00:05:42,912] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 00:05:42] "[36mGET /predict?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2024-04-18 00:06:02,740] 96 werkzeug - INFO -  * Detected change in 'C:\\Users\\USER\\Desktop\\FraudDetection\\app.py', reloading
