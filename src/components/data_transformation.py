@@ -74,10 +74,64 @@ class DataTransformation:
             logging.info('Read train and test data completed')
             
             #Feature Engineering for train data
-            train_df = feature_engg(train_df)
+            train_df['trans_date_trans_time'] = pd.to_datetime(train_df['trans_date_trans_time'],format='mixed')
+
+            train_df['hour'] = train_df['trans_date_trans_time'].dt.hour
+            train_df['day'] = train_df['trans_date_trans_time'].dt.day_name()
+            train_df['month'] = train_df['trans_date_trans_time'].dt.month
+                    
+            train_df['merchant'] = train_df['merchant'].apply(lambda x : x.replace('fraud_',''))
+
+            train_df['dob'] = pd.to_datetime(train_df['dob'],format='mixed')
+            train_df['age'] = (train_df['trans_date_trans_time'].dt.year - train_df['dob'].dt.year)
+
+            train_df['distance_km'] = round(train_df.apply(lambda row: great_circle((row['lat'], row['long']), (row['merch_lat'], row['merch_long'])).kilometers, axis=1), 2)
+
+            train_df.sort_values(['cc_num', 'trans_date_trans_time'],inplace=True)
+            train_df['hours_diff_bet_trans']=((train_df.groupby('cc_num')[['trans_date_trans_time']].diff())/np.timedelta64(1,'h'))
+
+
+            freq = train_df.groupby('cc_num').size()
+            train_df['cc_freq'] = train_df['cc_num'].apply(lambda x : freq[x])
+
+            def class_det(x):
+                        for idx,val in enumerate(list(range(800,5000,800))):
+                            if x < val:
+                                return idx+1
+                            
+            train_df['cc_freq_class'] = train_df['cc_freq'].apply(class_det)
+
+            train_df['day'] = train_df['trans_date_trans_time'].dt.weekday
 
             #Feature Engineering for test data
-            test_df = feature_engg(test_df)
+            test_df['trans_date_trans_time'] = pd.to_datetime(test_df['trans_date_trans_time'],format='mixed')
+
+            test_df['hour'] = test_df['trans_date_trans_time'].dt.hour
+            test_df['day'] = test_df['trans_date_trans_time'].dt.day_name()
+            test_df['month'] = test_df['trans_date_trans_time'].dt.month
+                    
+            test_df['merchant'] = test_df['merchant'].apply(lambda x : x.replace('fraud_',''))
+
+            test_df['dob'] = pd.to_datetime(test_df['dob'],format='mixed')
+            test_df['age'] = (test_df['trans_date_trans_time'].dt.year - test_df['dob'].dt.year)
+
+            test_df['distance_km'] = round(test_df.apply(lambda row: great_circle((row['lat'], row['long']), (row['merch_lat'], row['merch_long'])).kilometers, axis=1), 2)
+
+            test_df.sort_values(['cc_num', 'trans_date_trans_time'],inplace=True)
+            test_df['hours_diff_bet_trans']=((test_df.groupby('cc_num')[['trans_date_trans_time']].diff())/np.timedelta64(1,'h'))
+
+
+            freq = test_df.groupby('cc_num').size()
+            test_df['cc_freq'] = test_df['cc_num'].apply(lambda x : freq[x])
+
+            def class_det(x):
+                        for idx,val in enumerate(list(range(800,5000,800))):
+                            if x < val:
+                                return idx+1
+                            
+            test_df['cc_freq_class'] = test_df['cc_freq'].apply(class_det)
+
+            test_df['day'] = test_df['trans_date_trans_time'].dt.weekday
             
 
             logging.info('Obtaining preprocessing object')
