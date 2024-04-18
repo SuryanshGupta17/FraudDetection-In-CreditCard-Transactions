@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 import mysql.connector
 from sqlalchemy import create_engine
+import mysql.connector
 import numpy as np
 import pickle 
 from geopy.distance import great_circle
@@ -51,6 +52,7 @@ def load_obj(file_path):
 
 
 def feature_engg(test_df):
+
     test_df['trans_date_trans_time'] = pd.to_datetime(test_df['trans_date_trans_time'],format='mixed')
 
     test_df['hour'] = test_df['trans_date_trans_time'].dt.hour
@@ -85,7 +87,7 @@ def feature_engg(test_df):
 def import_data_from_mysql():
     connection = connect_to_mysql()
     
-    query = "SELECT * FROM fraudprojectdata"
+    query = "SELECT * FROM fraudprojectdata LIMIT 120000"
     
     filename = "data/Train.csv"
     export_data(connection, query, filename)
@@ -118,4 +120,3 @@ def export_data(connection, query, filename):
         print("Data exported and saved to file:", filename)
     except mysql.connector.Error as error:
         print("Failed to export data from MySQL:", error)
-
