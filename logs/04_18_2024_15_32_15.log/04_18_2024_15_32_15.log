@@ -1,0 +1,3 @@
+[2024-04-18 15:32:15,723] 149 mysql.connector - INFO - package: mysql.connector.plugins
+[2024-04-18 15:32:15,723] 150 mysql.connector - INFO - plugin_name: caching_sha2_password
+[2024-04-18 15:32:15,723] 154 mysql.connector - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin

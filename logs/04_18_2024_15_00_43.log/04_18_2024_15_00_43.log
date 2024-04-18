@@ -1,0 +1,9 @@
+[2024-04-18 15:00:44,555] 96 werkzeug - WARNING -  * Debugger is active!
+[2024-04-18 15:00:44,572] 96 werkzeug - INFO -  * Debugger PIN: 680-784-833
+[2024-04-18 15:00:50,490] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 15:00:50] "GET /predict HTTP/1.1" 200 -
+[2024-04-18 15:01:07,678] 76 root - INFO - Dataframe created
+[2024-04-18 15:01:07,886] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 15:01:07] "POST /predict HTTP/1.1" 200 -
+[2024-04-18 15:01:09,390] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 15:01:09] "GET /predict HTTP/1.1" 200 -
+[2024-04-18 15:01:28,283] 76 root - INFO - Dataframe created
+[2024-04-18 15:01:28,300] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 15:01:28] "POST /predict HTTP/1.1" 200 -
+[2024-04-18 15:01:29,554] 96 werkzeug - INFO - 127.0.0.1 - - [18/Apr/2024 15:01:29] "GET /predict HTTP/1.1" 200 -
