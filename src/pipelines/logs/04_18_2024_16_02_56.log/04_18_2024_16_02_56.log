@@ -1,0 +1,34 @@
+[2024-04-18 16:02:58,288] 26 root - INFO - Data Ingestion methods Starts
+[2024-04-18 16:03:00,388] 29 root - INFO - Dataset read as pandas Dataframe
+[2024-04-18 16:03:06,455] 35 root - INFO - Train test split
+[2024-04-18 16:03:13,732] 41 root - INFO - Ingestion of Data is completed
+[2024-04-18 16:03:13,732] 42 root - INFO - Dataframe Head : 
+   Unnamed: 0 trans_date_trans_time            cc_num                              merchant        category    amt   first      last gender                       street        city state    zip      lat      long  city_pop                     job         dob                         trans_num   unix_time  merch_lat  merch_long  is_fraud
+0           0   2020-06-21 12:14:25  2291163933867244                 fraud_Kirlin and Sons   personal_care   2.86    Jeff   Elliott      M            351 Darlene Green    Columbia    SC  29209  33.9659  -80.9355    333497     Mechanical engineer  1968-03-19  2da90c7d74bd46a0caf3777415b3ebd3  1371816865  33.986391  -81.200714         0
+1           1   2020-06-21 12:14:33  3573030041201292                  fraud_Sporer-Keebler   personal_care  29.84  Joanne  Williams      F             3638 Marsh Union     Altonah    UT  84002  40.3207 -110.4360       302  Sales professional, IT  1990-01-17  324cc204407e99f51b0d6ca0055005e7  1371816873  39.450498 -109.960431         0
+2           2   2020-06-21 12:14:53  3598215285024754  fraud_Swaniawski, Nitzsche and Welch  health_fitness  41.28  Ashley     Lopez      F         9333 Valentine Point    Bellmore    NY  11710  40.6729  -73.5365     34496       Librarian, public  1970-10-21  c81755dbbbea9d5c77f094348a7579be  1371816893  40.495810  -74.196111         0
+3           3   2020-06-21 12:15:15  3591919803438423                     fraud_Haley Group        misc_pos  60.05   Brian  Williams      M  32941 Krystal Mill Apt. 552  Titusville    FL  32780  28.5697  -80.8191     54767            Set designer  1987-07-25  2159175b9efe66dc301f149d3d5abf8c  1371816915  28.812398  -80.883061         0
+4           4   2020-06-21 12:15:17  3526826139003047                 fraud_Johnston-Casper          travel   3.19  Nathan    Massey      M     5783 Evan Roads Apt. 465    Falmouth    MI  49632  44.2529  -85.0170      1126      Furniture designer  1955-07-06  57ff021bd3f328f8738bb535c302a31b  1371816917  44.959148  -85.884734         0
+[2024-04-18 16:03:16,038] 74 root - INFO - Read train and test data completed
+[2024-04-18 16:03:41,322] 137 root - INFO - Obtaining preprocessing object
+[2024-04-18 16:03:41,322] 30 root - INFO - Data Transformation initiated
+[2024-04-18 16:03:41,322] 35 root - INFO - Pipeline Initiated
+[2024-04-18 16:03:41,463] 150 root - INFO - Train Dataframe Head after Feature Engineering: 
+        cc_freq  cc_freq_class           city                          job  age gender            merchant       category  distance_km  month  day  hour  hours_diff_bet_trans     amt
+360076      470              1  Fort Washakie  Information systems manager   34      F         Kutch-Ferry           home        30.46      6    6    13                   NaN  124.66
+234220      470              1  Fort Washakie  Information systems manager   34      F     Halvorson Group       misc_pos        91.94      6    6    16              3.331667   78.52
+282935      470              1  Fort Washakie  Information systems manager   34      F  Conroy-Cruickshank  gas_transport       121.86      6    0     7             15.549167   65.25
+226804      470              1  Fort Washakie  Information systems manager   34      F          Larkin Ltd      kids_pets        65.41      6    0    15              7.566111   87.74
+78735       470              1  Fort Washakie  Information systems manager   34      F     Leffler-Goldner  personal_care        38.31      6    1    12             20.939722  148.02
+[2024-04-18 16:03:41,479] 154 root - INFO - Test Dataframe Head after Feature Engineering: 
+        cc_freq  cc_freq_class           city                          job  age gender                         merchant      category  distance_km  month  day  hour  hours_diff_bet_trans     amt
+148783      208              1  Fort Washakie  Information systems manager   34      F      Kihn, Abernathy and Douglas  shopping_net        61.99      6    1    14                   NaN    2.83
+17035       208              1  Fort Washakie  Information systems manager   34      F  Ritchie, Oberbrunner and Cremin        travel        84.59      6    1    22              8.352500    5.39
+8321        208              1  Fort Washakie  Information systems manager   34      F                      Bradtke PLC   grocery_pos       102.00      6    3     8             34.006111   81.14
+20711       208              1  Fort Washakie  Information systems manager   34      F                      Pollich LLC          home       104.40      6    3    18              9.906111  142.60
+45353       208              1  Fort Washakie  Information systems manager   34      F       Baumbach, Feeney and Morar  shopping_net        53.54      6    4    16             21.636111    7.22
+[2024-04-18 16:03:43,270] 161 root - INFO - Applying preprocessing object on training and testing datasets.
+[2024-04-18 16:03:43,381] 192 root - INFO - Preprocessor pickle file saved
+[2024-04-18 16:03:43,475] 27 root - INFO - Seggregating the dependent and independent variables
+[2024-04-18 16:04:09,536] 44 root - INFO - Model Report: {'Logistic Regression': 0.9964550493054056, 'Decision Tree': 0.953651719091149}
+[2024-04-18 16:04:09,545] 55 root - INFO - The best model is Logistic Regression, with Accuracy Score: 0.9964550493054056
